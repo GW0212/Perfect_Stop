@@ -1,0 +1,1203 @@
+/* STOP Challenge - Clean UI */
+:root{
+  --bg:#ffffff;
+  --card:rgba(0,0,0,0.03);
+  --card2:rgba(0,0,0,0.04);
+  --text:#111827;
+  --muted:rgba(17,24,39,0.65);
+  --border:rgba(17,24,39,0.10);
+  --shadow: 0 10px 26px rgba(17,24,39,0.10);
+  --accent:#0077ff;
+  --accent2:#6d28d9;
+  --good:#16a34a;
+  --bad:#dc2626;
+  --radius:22px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  overflow:hidden; /* 한 화면 고정 */
+}
+
+.bg{
+  display:none;
+}
+
+.topbar{
+  border-bottom:1px solid var(--border);
+  background: rgba(255,255,255,0.85);
+  padding:12px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  gap:12px;
+  flex: 0 0 auto;
+}
+
+.brand{
+  text-align:center;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:linear-gradient(135deg, rgba(0,200,255,0.20), rgba(124,77,255,0.18));
+  border:1px solid var(--border);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+.title{ font-weight:800; letter-spacing: -0.02em; }
+.subtitle{ font-size:13px; color:var(--muted); margin-top:2px; }
+
+.top-actions{ display:flex; gap:10px; 
+  position:absolute;
+  right:18px;
+  top:14px;
+}
+
+.wrap{
+  max-width: 980px;
+  width:100%;
+  margin: 14px auto 0;
+  padding: 0 16px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+  flex: 1 1 auto;
+  overflow:hidden;
+}
+@media (max-width: 920px){
+  .wrap{
+  max-width: 980px;
+  width:100%;
+  margin: 14px auto 0;
+  padding: 0 16px 10px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+  flex: 1 1 auto;
+  overflow:hidden;
+}
+}
+
+.card{
+  background:#ffffff;
+  border:1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 14px;
+  width: 100%;
+  text-align:center;
+}
+
+h2{
+  margin:0 0 8px;
+  font-size:16px;
+  letter-spacing:-0.01em;
+}
+.muted{ color:var(--muted); font-size:13px; line-height:1.45; margin:0 0 14px; }
+
+.stages{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+}
+@media (max-width: 420px){
+  .stages{ grid-template-columns: 1fr; }
+}
+
+.stage{
+  text-align:center;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  padding: 10px 10px;
+  cursor:pointer;
+  transition: transform .08s ease, background .12s ease, border-color .12s ease;
+  color:var(--text);
+}
+.stage:hover{ transform: translateY(-1px); border-color: rgba(17,24,39,0.18); background: rgba(17,24,39,0.04); }
+.stage[aria-selected="true"]{
+  background: linear-gradient(135deg, rgba(0,200,255,0.18), rgba(124,77,255,0.15));
+  border-color: rgba(0,200,255,0.35);
+}
+.stage-time{ font-weight:900; font-size:16px; }
+.stage-sub{ margin-top:4px; font-size:12px; color:var(--muted); }
+.stage-sub b{ color:#111827; }
+
+.stats{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:10px;
+  margin-top:12px;
+}
+.stat{
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:12px;
+  background: rgba(255,255,255,0.05);
+}
+.stat-label{ font-size:12px; color:var(--muted); }
+.stat-value{ margin-top:6px; font-size:18px; font-weight:900; letter-spacing:-0.02em; }
+
+.timer-box{
+  display:grid;
+  place-items:center;
+  padding: 18px 12px 12px;
+  border-radius: 20px;
+  border:1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+}
+.timer{
+  font-variant-numeric: tabular-nums;
+  font-size: 78px;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  text-shadow: 0 10px 30px rgba(0,0,0,0.50);
+}
+@media (max-width: 420px){
+  .timer{ font-size: 62px; }
+}
+.timer-hint{
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.controls{
+  margin-top: 14px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+button{
+  border:1px solid var(--border);
+  background: rgba(17,24,39,0.04);
+  color:var(--text);
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  cursor:pointer;
+  transition: transform .06s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+  user-select:none;
+}
+button:hover{ transform: translateY(-1px); background: rgba(17,24,39,0.07); border-color: rgba(17,24,39,0.18); }
+button:active{ transform: translateY(0px) scale(0.99); }
+button:disabled{ opacity:0.45; cursor:not-allowed; transform:none; }
+
+.primary{
+  border-color: rgba(0,200,255,0.38);
+  background: linear-gradient(135deg, rgba(0,200,255,0.20), rgba(124,77,255,0.16));
+}
+.stop{
+  border-color: rgba(255,92,124,0.45);
+  background: linear-gradient(135deg, rgba(255,92,124,0.22), rgba(255,167,92,0.10));
+}
+.ghost{
+  background: rgba(255,255,255,0.06);
+}
+
+.result{
+  margin-top: 14px;
+  padding: 14px 12px;
+  border-radius: 20px;
+  border:1px solid var(--border);
+  background:#ffffff;
+  text-align:center;
+}
+.result-title{
+  font-weight: 950;
+  letter-spacing:-0.02em;
+  font-size: 20px;
+}
+.result-sub{
+  margin-top: 6px;
+  color:var(--muted);
+  font-size: 13px;
+  line-height:1.45;
+}
+.result-actions{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top: 10px;
+  flex-wrap:wrap;
+}
+
+.fx{
+  position: fixed;
+  inset: 0;
+  width:100vw;
+  height:100vh;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background: transparent;
+  pointer-events:none;
+  display:none;
+  z-index: 50;
+}
+
+.kbd{ color:#000000 !important; }
+.kbd-key{ color:#000000 !important; border-color:#000000 !important; }
+
+.footer{
+  flex:0 0 auto;
+  border-top:1px solid var(--border);
+  padding: 8px 14px;
+  color: var(--muted);
+  font-size:12px;
+  text-align:center;
+}
+
+.how{
+  border:none;
+  border-radius: 18px;
+  padding: 18px 18px 10px;
+  background: #ffffff;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  width:min(560px, calc(100vw - 32px));
+}
+.how::backdrop{
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+}
+.how h3{ margin:0 0 10px; }
+.how ol{ margin:0 0 10px 18px; }
+.how menu{ display:flex; justify-content:flex-end; padding:0; margin:0; }
+
+.shake{
+  animation: shake .26s ease-in-out 0s 2;
+}
+@keyframes shake{
+  0%{ transform: translateX(0); }
+  25%{ transform: translateX(-6px); }
+  50%{ transform: translateX(6px); }
+  75%{ transform: translateX(-4px); }
+  100%{ transform: translateX(0); }
+}
+
+.brand > div{ text-align:center; }
+
+
+/* One-screen layout tuning */
+.stage-card{ flex: 0 0 auto; }
+.game-card{ flex: 1 1 auto; display:flex; flex-direction:column; }
+.game-card .timer-box{ flex: 0 0 auto; }
+.game-card .result{ flex: 0 0 auto; }
+.game-card .controls{ flex: 0 0 auto; }
+.game-card .kbd{ color:#000000 !important; }
+
+/* Make timer box compact */
+.timer-box{ padding: 14px 10px 10px; }
+.timer{ font-size: 64px; line-height:1; }
+
+/* Fix goal/description text contrast */
+#gameSub{ color: rgba(17,24,39,0.75); }
+
+/* FX canvas as overlay (no layout space) */
+.fx{
+  position: fixed;
+  inset: 0;
+  width:100vw;
+  height:100vh;
+  margin:0;
+  border:0;
+  border-radius:0;
+  background: transparent;
+  pointer-events:none;
+  display:none;
+  z-index: 50;
+}
+
+.kbd span{ color:#000000 !important; }
+
+
+/* Topbar volume + fullscreen */
+.top-actions{ display:flex; align-items:center; justify-content:center; gap:10px; }
+.vol{ display:flex; align-items:center; gap:8px; padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:#fff; }
+.vol-ico{ font-size:14px; }
+.vol-range{ width:120px; }
+
+/* Mode row */
+.mode-row{ display:flex; gap:10px; justify-content:center; align-items:center; margin-top:8px; }
+
+/* Result enhancements */
+.result-grade{
+  margin-top:6px;
+  font-weight:900;
+  letter-spacing:0.2px;
+}
+.result-actions-inline{ margin-top:10px; display:flex; justify-content:center; }
+
+/* Responsive tweaks */
+@media (max-width: 560px){
+  .vol-range{ width:90px; }
+  .mode-row{ flex-wrap:wrap; }
+}
+
+
+/* ---------- Mobile layout fixes ---------- */
+@media (max-width: 520px){
+  body{ padding-top: 0; }
+  .wrap{ padding: 0 10px 18px; }
+  .topbar{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 10px 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .topbar .left, .topbar .center, .topbar .right{
+    min-width: 0;
+  }
+  .topbar-inner{
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 10px;
+    justify-content: center;
+  }
+
+  /* Header title block centers and wraps */
+  .brand{
+    flex: 1 1 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+  .brand .title-wrap{
+    text-align: center;
+  }
+  .brand .title{
+    font-size: 16px;
+    line-height: 1.1;
+    margin: 0;
+  }
+  .brand .subtitle{
+    font-size: 12px;
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  /* Actions row: prevent overlap by wrapping */
+  .top-actions{
+    flex: 1 1 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .top-actions .chip,
+  .top-actions button{
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .top-actions .icon-btn{
+    width: 38px;
+    padding: 0;
+  }
+
+  /* Volume slider: shrink and never overflow */
+  .vol-wrap{
+    flex: 1 1 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+  .vol-wrap input[type="range"]{
+    width: min(220px, 70vw);
+    max-width: 220px;
+  }
+
+  /* Cards spacing */
+  .card{ padding: 16px 14px; }
+  .stages{
+    gap: 10px;
+  }
+  .stage{
+    min-width: 0;
+    flex: 1 1 0;
+    padding: 12px 10px;
+  }
+
+  /* Timer and buttons scale */
+  .timer{
+    font-size: clamp(44px, 13vw, 72px);
+    padding: 18px 10px;
+  }
+  .controls{
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .controls button{
+    min-width: 96px;
+    height: 44px;
+  }
+
+  /* Result box */
+  .result{
+    padding: 14px 12px;
+  }
+}
+
+/* Ultra-small devices */
+@media (max-width: 360px){
+  .top-actions .chip, .top-actions button{ font-size: 12px; padding: 0 10px; }
+  .controls button{ min-width: 86px; }
+}
+
+
+/* ---------- Mobile overlap hotfix (iOS Safari) ---------- */
+@media (max-width: 520px){
+  .topbar{
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: calc(10px + env(safe-area-inset-top)) 12px 10px !important;
+  }
+  .brand{
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .brand > div{
+    text-align: center !important;
+  }
+  .top-actions{
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+  .top-actions .ghost{
+    height: 34px !important;
+    padding: 0 12px !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+  }
+  .vol{
+    flex: 1 1 100% !important;
+    justify-content: center !important;
+    display:flex !important;
+    align-items:center !important;
+    gap: 8px !important;
+    max-width: 100% !important;
+  }
+  .vol-range{
+    width: min(220px, 70vw) !important;
+    max-width: 220px !important;
+  }
+  /* Give content a little breathing room */
+  .wrap{
+    margin-top: 10px !important;
+    padding: 0 12px 16px !important;
+  }
+}
+@media (max-width: 360px){
+  .vol-range{ width: min(190px, 66vw) !important; }
+}
+
+
+/* ---------- Mobile header absolute-position fix ---------- */
+@media (max-width: 520px){
+  .topbar{
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    padding: calc(12px + env(safe-area-inset-top)) 14px 12px !important;
+  }
+
+  /* IMPORTANT: remove absolute positioning that causes overlap */
+  .top-actions{
+    position: static !important;
+    right: auto !important;
+    top: auto !important;
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    margin-top: 2px !important;
+  }
+
+  .brand{
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .brand .logo{ flex: 0 0 auto; }
+  .brand .title{ font-size: 16px !important; line-height: 1.1 !important; }
+  .brand .subtitle{ font-size: 12px !important; line-height: 1.2 !important; }
+
+  /* Volume pill should shrink and never overflow */
+  .vol{
+    flex: 1 1 100% !important;
+    justify-content: center !important;
+    max-width: 100% !important;
+    padding: 8px 10px !important;
+  }
+  .vol-range{
+    width: min(240px, 78vw) !important;
+    max-width: 240px !important;
+  }
+
+  /* Keep icon buttons consistent */
+  .top-actions .ghost{
+    height: 34px !important;
+    padding: 0 12px !important;
+    border-radius: 999px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Prevent content from sliding under header when Safari collapses bars */
+  .wrap{
+    padding-top: 10px !important;
+  }
+}
+@media (max-width: 360px){
+  .vol-range{ width: min(210px, 76vw) !important; }
+}
+
+
+/* ---------- Mobile: hide fullscreen & mute buttons ---------- */
+@media (max-width: 520px){
+  #btnFull, #btnSound{
+    display: none !important;
+  }
+}
+
+
+/* ---------- Desktop layout: move header controls between title and stage ---------- */
+@media (min-width: 521px){
+  /* Make header 2 rows: title first, then controls */
+  .topbar{
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    padding: 14px 18px 10px !important;
+  }
+  .brand{
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .brand > div{ text-align: center !important; }
+  /* Controls should be in normal flow (not absolute) and centered */
+  .top-actions{
+    position: static !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    max-width: 980px !important;
+    margin: 0 auto !important;
+  }
+  .vol{
+    max-width: 520px !important;
+  }
+  .vol-range{
+    width: 240px !important;
+  }
+
+  /* ---------- Desktop: tighten vertical spacing so it fits in one screen ---------- */
+  .wrap{
+    padding: 0 18px 14px !important;
+  }
+  .card{
+    padding: 18px 18px !important;
+    margin-bottom: 14px !important;
+  }
+  .card h2{
+    margin-bottom: 6px !important;
+  }
+  .stages{
+    gap: 12px !important;
+    margin-top: 10px !important;
+  }
+  .stage{
+    padding: 14px 14px !important;
+  }
+  .stats{
+    margin-top: 12px !important;
+    gap: 12px !important;
+  }
+  .stat{
+    padding: 14px 14px !important;
+  }
+  .game-card .timer{
+    font-size: 72px !important;
+    padding: 22px 16px !important;
+  }
+  .controls{
+    margin-top: 10px !important;
+    gap: 10px !important;
+  }
+  .controls button{
+    height: 46px !important;
+    min-width: 120px !important;
+  }
+  .result{
+    margin-top: 12px !important;
+    padding: 16px 16px !important;
+  }
+  .result h3{
+    margin-bottom: 6px !important;
+  }
+  footer{
+    margin-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}
+
+
+/* ---------- Mobile: fit one-screen without bottom cut-off ---------- */
+@media (max-width: 520px){
+  html, body{
+    height: 100%;
+  }
+  /* Use dynamic viewport on mobile browsers (iOS Safari) */
+  body{
+    min-height: 100svh;
+    min-height: 100dvh;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+  .wrap{
+    padding: 0 12px calc(18px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Tighten vertical rhythm */
+  .card{
+    padding: 14px 12px !important;
+    margin-bottom: 12px !important;
+  }
+  .stages{ gap: 10px !important; margin-top: 8px !important; }
+  .stage{ padding: 10px 10px !important; }
+  .stats{ margin-top: 10px !important; gap: 10px !important; }
+  .stat{ padding: 12px 10px !important; }
+
+  /* Game area compaction */
+  .game-card .timer{
+    font-size: clamp(40px, 12.5vw, 62px) !important;
+    padding: 16px 10px !important;
+  }
+  .controls{
+    margin-top: 8px !important;
+    gap: 8px !important;
+  }
+  .controls button{
+    height: 42px !important;
+    min-width: 92px !important;
+  }
+
+  /* Result box spacing */
+  .result{
+    margin-top: 10px !important;
+    padding: 12px 10px !important;
+  }
+
+  /* Footer should not steal space */
+  footer{
+    margin-top: 8px !important;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 360px){
+  .controls button{ min-width: 84px !important; }
+  .game-card .timer{ font-size: clamp(38px, 13vw, 58px) !important; }
+}
+
+
+/* ---------- Mobile: compact layout (ensure START/STOP/RESET visible) ---------- */
+@media (max-width: 520px){
+  /* Undo overly large bottom padding; keep only safe-area */
+  body{
+    padding-bottom: env(safe-area-inset-bottom) !important;
+    min-height: 100svh !important;
+    min-height: 100dvh !important;
+  }
+  .wrap{
+    padding: 0 10px env(safe-area-inset-bottom) !important;
+  }
+
+  /* Compact header height */
+  .topbar{
+    gap: 8px !important;
+    padding: calc(8px + env(safe-area-inset-top)) 10px 8px !important;
+  }
+  .top-actions{
+    gap: 6px !important;
+  }
+  .vol{
+    padding: 6px 8px !important;
+  }
+  .vol-range{
+    width: min(200px, 68vw) !important;
+    max-width: 200px !important;
+  }
+
+  /* Compact cards */
+  .card{
+    padding: 12px 10px !important;
+    margin-bottom: 10px !important;
+  }
+  .card h2{
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .card p{
+    margin-top: 2px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .stages{ gap: 8px !important; margin-top: 6px !important; }
+  .stage{ padding: 10px 8px !important; }
+  .stage .name{ font-size: 15px !important; }
+  .stage .goal{ font-size: 12px !important; }
+
+  .stats{ margin-top: 8px !important; gap: 8px !important; }
+  .stat{ padding: 10px 8px !important; }
+  .stat .label{ font-size: 12px !important; }
+  .stat .value{ font-size: 22px !important; }
+
+  /* Game area: reduce timer box & button row */
+  .game-card .timer{
+    font-size: clamp(38px, 11.5vw, 56px) !important;
+    padding: 12px 8px !important;
+    margin-top: 6px !important;
+  }
+  .game-card .hint{
+    margin-top: 4px !important;
+  }
+  .controls{
+    margin-top: 8px !important;
+    gap: 8px !important;
+  }
+  .controls button{
+    height: 38px !important;
+    min-width: 84px !important;
+    padding: 0 14px !important;
+  }
+
+  /* Random toggle chip tighter */
+  #btnRandom{
+    height: 34px !important;
+    padding: 0 12px !important;
+    margin: 8px auto 6px !important;
+  }
+
+  /* Result box more compact */
+  .result{
+    margin-top: 8px !important;
+    padding: 10px 10px !important;
+  }
+  .result h3{ margin-bottom: 4px !important; }
+
+  /* Hide footer on mobile to free vertical space */
+  footer{
+    display: none !important;
+  }
+}
+
+@media (max-width: 360px){
+  .controls button{ min-width: 78px !important; }
+  .game-card .timer{ font-size: clamp(34px, 12vw, 52px) !important; }
+  .vol-range{ width: min(180px, 64vw) !important; }
+}
+
+
+/* ---------- PC: prevent result box from being clipped ---------- */
+@media (min-width: 521px){
+  .wrap{
+    overflow: visible !important;      /* was hidden -> clipped result area */
+    overflow-x: hidden !important;
+    padding-bottom: 24px !important;   /* breathing room above footer */
+  }
+}
+
+
+/* ---------- PC: shrink stage/stats so result box fits in one screen ---------- */
+@media (min-width: 521px){
+  /* Overall tighter vertical rhythm */
+  .card{
+    padding: 14px 16px !important;
+    margin-bottom: 12px !important;
+  }
+  .card h2{ margin-bottom: 4px !important; }
+  .card p{ margin-bottom: 10px !important; }
+
+  /* Stage buttons smaller */
+  .stages{ gap: 10px !important; margin-top: 8px !important; }
+  .stage{
+    padding: 12px 12px !important;
+    min-height: 0 !important;
+  }
+  .stage .name{ font-size: 18px !important; }
+  .stage .goal{ font-size: 12px !important; }
+
+  /* Stats smaller */
+  .stats{ margin-top: 10px !important; gap: 10px !important; }
+  .stat{
+    padding: 12px 12px !important;
+    min-height: 0 !important;
+  }
+  .stat .label{ font-size: 12px !important; }
+  .stat .value{ font-size: 26px !important; }
+
+  /* Game card compaction */
+  .game-card .timer{
+    font-size: 64px !important;
+    padding: 18px 14px !important;
+  }
+  #btnRandom{
+    height: 36px !important;
+    padding: 0 14px !important;
+    margin: 8px auto 8px !important;
+  }
+  .controls{ margin-top: 8px !important; }
+  .controls button{
+    height: 44px !important;
+    min-width: 112px !important;
+  }
+
+  /* Result box slightly tighter but readable */
+  .result{
+    margin-top: 10px !important;
+    padding: 14px 14px !important;
+  }
+  .result h3{ margin-bottom: 4px !important; }
+
+  /* Footer closer */
+  footer{
+    margin-top: 8px !important;
+  }
+}
+
+
+/* ---------- PC: when result is visible, compress layout to avoid scroll ---------- */
+@media (min-width: 521px){
+  html.with-result .topbar{
+    padding: 10px 18px 6px !important;
+    gap: 10px !important;
+  }
+  html.with-result .stage-card{
+    padding: 12px 14px !important;
+    margin-bottom: 10px !important;
+  }
+  html.with-result .stages{
+    margin-top: 6px !important;
+    gap: 8px !important;
+  }
+  html.with-result .stage{
+    padding: 10px 10px !important;
+  }
+  html.with-result .stats{
+    margin-top: 8px !important;
+    gap: 8px !important;
+  }
+  html.with-result .stat{
+    padding: 10px 10px !important;
+  }
+  html.with-result .game-card{
+    padding: 14px 16px !important;
+  }
+  html.with-result .game-card .timer{
+    font-size: 56px !important;
+    padding: 14px 12px !important;
+  }
+  html.with-result #btnRandom{
+    height: 34px !important;
+    margin: 6px auto 6px !important;
+  }
+  html.with-result .controls button{
+    height: 42px !important;
+    min-width: 104px !important;
+  }
+  html.with-result .result{
+    margin-top: 8px !important;
+    padding: 12px 12px !important;
+  }
+  html.with-result footer{
+    display: none !important; /* frees vertical space so result is fully visible */
+  }
+}
+
+
+/* ---------- Mobile: when result is shown, compact further so result box is fully visible ---------- */
+@media (max-width: 520px){
+  html.with-result body{
+    /* add small safe bottom buffer so result text isn't covered by Safari bottom bar */
+    padding-bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+  }
+  html.with-result .wrap{
+    padding-bottom: calc(12px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Make top/header + stage area tighter only while showing result */
+  html.with-result .topbar{
+    padding: calc(6px + env(safe-area-inset-top)) 10px 6px !important;
+    gap: 6px !important;
+  }
+  html.with-result .card{
+    padding: 10px 10px !important;
+    margin-bottom: 8px !important;
+  }
+  html.with-result .stages{ gap: 6px !important; margin-top: 6px !important; }
+  html.with-result .stage{ padding: 8px 8px !important; }
+  html.with-result .stats{ margin-top: 6px !important; gap: 6px !important; }
+  html.with-result .stat{ padding: 8px 8px !important; }
+  html.with-result .stat .value{ font-size: 20px !important; }
+
+  /* Game area tighter */
+  html.with-result .game-card .timer{
+    font-size: clamp(34px, 10.8vw, 52px) !important;
+    padding: 10px 8px !important;
+    margin-top: 6px !important;
+  }
+  html.with-result #btnRandom{
+    height: 30px !important;
+    padding: 0 10px !important;
+    margin: 6px auto 6px !important;
+  }
+  html.with-result .controls{
+    margin-top: 6px !important;
+    gap: 6px !important;
+  }
+  html.with-result .controls button{
+    height: 36px !important;
+    min-width: 78px !important;
+    padding: 0 12px !important;
+  }
+
+  /* Result box itself more compact but readable */
+  html.with-result .result{
+    margin-top: 6px !important;
+    padding: 10px 10px !important;
+  }
+  html.with-result .result h3{ margin-bottom: 2px !important; }
+  html.with-result .result .badge{ margin-top: 2px !important; }
+}
+
+
+/* ---------- Mobile: pin result box so it never gets cut by Safari bottom bar ---------- */
+@media (max-width: 520px){
+  html.with-result .result{
+    position: fixed !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    bottom: calc(10px + env(safe-area-inset-bottom)) !important;
+    width: calc(100% - 20px) !important;
+    max-width: 520px !important;
+    z-index: 50 !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,.10) !important;
+    margin-top: 0 !important;
+  }
+  /* Reserve space so underlying content isn't hidden */
+  html.with-result .wrap{
+    padding-bottom: calc(170px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+
+/* ---------- Mobile: keep fixed result at bottom but prevent overlap with game area ---------- */
+@media (max-width: 520px){
+  html.with-result .game-card{
+    /* Reserve vertical space so fixed result doesn't cover timer/buttons */
+    padding-bottom: calc(200px + env(safe-area-inset-bottom)) !important;
+  }
+  html.with-result .game-card .timer{
+    /* Smaller when result shows, to avoid scroll */
+    font-size: clamp(32px, 10.2vw, 48px) !important;
+    padding: 10px 8px !important;
+    margin-top: 6px !important;
+  }
+  html.with-result .controls{
+    margin-top: 6px !important;
+  }
+  html.with-result .result{
+    width: calc(100% - 16px) !important;
+  }
+  /* Save a bit more height on stage card while result shows */
+  html.with-result .stage-card p{
+    display: none !important;
+  }
+}
+
+
+/* ---------- Mobile v23: NO overlap + fit title/stage/game/result in one screen (result shown) ---------- */
+@media (max-width: 520px){
+  /* When result is visible, DO NOT use fixed overlay; keep it in flow to avoid covering the game area */
+  html.with-result .result{
+    position: static !important;
+    left: auto !important;
+    transform: none !important;
+    bottom: auto !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    z-index: auto !important;
+  }
+
+  /* Make the whole layout a strict one-screen canvas while result is shown */
+  html.with-result body{
+    height: 100dvh !important;
+    overflow: hidden !important;
+  }
+  html.with-result .wrap{
+    min-height: 100dvh !important;
+    height: 100dvh !important;
+    overflow: hidden !important;
+    padding-bottom: env(safe-area-inset-bottom) !important;
+  }
+
+  /* Tighten header/title area */
+  html.with-result .topbar{
+    padding: calc(6px + env(safe-area-inset-top)) 10px 6px !important;
+    gap: 6px !important;
+  }
+  html.with-result .brand h1{
+    font-size: 16px !important;
+    line-height: 1.1 !important;
+    margin: 0 !important;
+  }
+  html.with-result .brand p{
+    font-size: 12px !important;
+    margin-top: 2px !important;
+  }
+
+  /* Stage card compaction */
+  html.with-result .card{
+    padding: 10px 10px !important;
+    margin-bottom: 8px !important;
+  }
+  html.with-result .card h2{
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  html.with-result .card p{
+    display: none !important; /* hide descriptive subtitles to save height */
+  }
+  html.with-result .stages{
+    gap: 6px !important;
+    margin-top: 6px !important;
+  }
+  html.with-result .stage{
+    padding: 8px 8px !important;
+    border-radius: 14px !important;
+  }
+  html.with-result .stage .name{
+    font-size: 16px !important;
+  }
+  html.with-result .stage .goal{
+    font-size: 11px !important;
+  }
+
+  /* Stats compaction */
+  html.with-result .stats{
+    margin-top: 6px !important;
+    gap: 6px !important;
+  }
+  html.with-result .stat{
+    padding: 8px 8px !important;
+    border-radius: 14px !important;
+  }
+  html.with-result .stat .label{
+    font-size: 11px !important;
+  }
+  html.with-result .stat .value{
+    font-size: 18px !important;
+  }
+
+  /* Game card: compress title/random/timer/buttons/result */
+  html.with-result .game-card h2{
+    font-size: 16px !important;
+    margin-bottom: 2px !important;
+  }
+  html.with-result .game-card .sub{
+    font-size: 12px !important;
+    margin-bottom: 6px !important;
+  }
+  html.with-result #btnRandom{
+    height: 28px !important;
+    padding: 0 10px !important;
+    margin: 6px auto 6px !important;
+    font-size: 12px !important;
+  }
+  html.with-result .game-card .timer{
+    font-size: clamp(30px, 10.0vw, 44px) !important;
+    padding: 10px 8px !important;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+    border-radius: 16px !important;
+  }
+  html.with-result .controls{
+    margin-top: 4px !important;
+    gap: 6px !important;
+  }
+  html.with-result .controls button{
+    height: 34px !important;
+    min-width: 74px !important;
+    padding: 0 12px !important;
+    border-radius: 16px !important;
+    font-size: 13px !important;
+  }
+
+  /* Result box compact (in-flow, below game controls) */
+  html.with-result .result{
+    margin-top: 6px !important;
+    padding: 10px 10px !important;
+    border-radius: 16px !important;
+  }
+  html.with-result .result h3{
+    font-size: 18px !important;
+    margin-bottom: 2px !important;
+  }
+  html.with-result .result .badge{
+    font-size: 14px !important;
+    margin-top: 2px !important;
+  }
+  html.with-result .result .desc{
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+  }
+  html.with-result .result button{
+    height: 34px !important;
+    padding: 0 14px !important;
+    font-size: 13px !important;
+  }
+
+  /* Hide footer on mobile when result is shown to guarantee one-screen fit */
+  html.with-result footer{
+    display: none !important;
+  }
+}
